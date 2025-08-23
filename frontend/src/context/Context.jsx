@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 const csvConfig = mkConfig({ useKeysAsHeaders: true });
 const AppContext = createContext();
 const api = axios.create({
-  baseURL: "http://localhost:8000/user",
+  baseURL: "https://expense-tracker-x2d5.onrender.com/user",
   withCredentials: true,
 });
 const refreshToken = async () => {
@@ -144,7 +144,6 @@ export const AppContextProvider = ({ children }) => {
       toast.error(error.response.data.message);
     }
   };
-
 
   useEffect(() => {
     const totals = expense.reduce((acc, item) => {
