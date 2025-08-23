@@ -19,7 +19,7 @@ const ExpenseTable = ({ filter, search }) => {
   return (
     <>
       <div className=" mt-4 rounded-b-2xl overflow-hidden border shadow-lg border-gray-300">
-        <div className="grid grid-cols-5  px-4 text-sm font-medium text-gray-500 py-4">
+        <div className="grid grid-cols-5  px-4 text-sm font-medium text-[#49494A] py-4">
           <p className="break-words ">DATE</p>
           <p className="text-center break-words">TITLE</p>
           <p className="text-center break-words">CATEGORY</p>
