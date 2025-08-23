@@ -1,4 +1,4 @@
-import * as Yup from "Yup";
+import * as Yup from "yup";
 
 export const expenseSchema = Yup.object().shape({
   title: Yup.string().required("Title is required"),
