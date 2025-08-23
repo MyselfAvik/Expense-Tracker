@@ -5,8 +5,8 @@ import { NavLink } from "react-router-dom";
 const Navbar = () => {
   const { logout, isLoggedIn } = useApp();
   return (
-    <div className="h-16 w-full sticky top-0 bg-white shadow-lg z-50 px-2">
-      <div className="max-w-6xl h-full w-full flex justify-between items-center mx-auto">
+    <div className="h-16 w-full sticky top-0 bg-white shadow-lg z-50 ">
+      <div className="max-w-6xl px-2 h-full w-full flex justify-between items-center mx-auto">
         <span className="text-violet-700 font-semibold text-2xl">
           Expense Tracker
         </span>
@@ -41,9 +41,7 @@ const Navbar = () => {
                 to="/register"
                 className={({ isActive }) =>
                   `relative cursor-pointer px-3 sm:px-6 py-3 text-2xl font-semibold transition-colors duration-300 group ${
-                    isActive
-                      ? "hidden"
-                      : "text-gray-700"
+                    isActive ? "hidden" : "text-gray-700"
                   }`
                 }
               >

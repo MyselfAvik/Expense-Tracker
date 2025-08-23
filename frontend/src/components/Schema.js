@@ -6,7 +6,8 @@ export const expenseSchema = Yup.object().shape({
     .typeError("Price Must be Number")
     .positive("Amount must be greater than 0")
     .required("Amount is required"),
-  date: Yup.string().nullable(),
+  date: Yup.date()
+    .max(new Date(), "Date cannot be in the future"),
   category: Yup.string().required("Category is required"),
 });
 
