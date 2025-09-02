@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import FormField from "../components/FormField";
 import { useApp } from "../context/Context";
 import Charts from "./Charts";
+import axios from "axios";
 const HomeContent = () => {
   const { user, expense, categoryTotals, downloadCsv } = useApp();
   const [totalPrice, setTotalPrice] = useState(0);
-
   const maxValue = Math.max(...Object.values(categoryTotals));
   const maxCategoryName = Object.keys(categoryTotals).find(
     (key) => categoryTotals[key] === maxValue
@@ -25,7 +25,22 @@ const HomeContent = () => {
           src={user.profileImage}
           alt="Profile"
         />
-        <input type="file" />
+        <input
+          type="file"
+          onChange={async (event) => {
+            const profileImage = event.currentTarget.files[0];
+            try {
+              await axios.post(
+                "https://expense-tracker-x2d5.onrender.com/user/changeProfilePic",
+                {
+                  profileImage: profileImage,
+                }
+              );
+            } catch (error) {
+              console.log(error);
+            }
+          }}
+        />
 
         <div className="flex flex-col gap-1 text-center sm:text-left">
           <h1 className="text-4xl font-semibold tracking-wide text-gray-900">
