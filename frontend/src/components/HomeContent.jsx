@@ -34,6 +34,9 @@ const HomeContent = () => {
                 "https://expense-tracker-x2d5.onrender.com/user/changeProfilePic",
                 {
                   profileImage: profileImage,
+                },
+                {
+                  withCredentials: true,
                 }
               );
             } catch (error) {
