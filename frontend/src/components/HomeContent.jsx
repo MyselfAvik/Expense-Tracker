@@ -29,12 +29,12 @@ const HomeContent = () => {
           type="file"
           onChange={async (event) => {
             const profileImage = event.currentTarget.files[0];
+            const formdata = new FormData();
+            formdata.append("profileImage", profileImage);
             try {
               await axios.post(
                 "https://expense-tracker-x2d5.onrender.com/user/changeProfilePic",
-                {
-                  profileImage: profileImage,
-                },
+                formdata,
                 {
                   withCredentials: true,
                 }
