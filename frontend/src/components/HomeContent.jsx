@@ -25,6 +25,7 @@ const HomeContent = () => {
           src={user.profileImage}
           alt="Profile"
         />
+        <input type="file" />
 
         <div className="flex flex-col gap-1 text-center sm:text-left">
           <h1 className="text-4xl font-semibold tracking-wide text-gray-900">
