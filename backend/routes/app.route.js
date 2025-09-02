@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { upload } from "../middlewares/multer.middleware.js";
 import {
+  changeProfilePic,
   checkAuth,
   deleteExpense,
   login,
@@ -14,6 +15,9 @@ import { verifySession } from "../middlewares/user.middleware.js";
 const router = Router();
 
 router.route("/signup").post(upload.single("profileImage"), signup);
+router
+  .route("/changeProfilePic")
+  .post(upload.single("profileImage"),verifySession, changeProfilePic);
 router.route("/login").post(login);
 router.route("/logout").post(verifySession, logout);
 router.route("/refresh").post(refreshAccesToken);

@@ -221,3 +221,33 @@ export const deleteExpense = async (req, res) => {
     });
   }
 };
+
+export const changeProfilePic = async (req, res) => {
+  const user = req.user;
+  let response;
+  if (req.file?.mimetype.includes("image")) {
+    const imagePath = req.file?.path;
+
+    if (imagePath) {
+      try {
+        response = await uploadOnCloudinary(imagePath);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
+
+  const profileImage = response?.secure_url || null;
+  if (profileImage) {
+    user.profileImage = profileImage;
+    await user.save({ validateBeforeSave: false });
+
+    return res.status(200).json({
+      message: "Profile Picture Edited Successfully",
+      profileImage,
+    });
+  }
+  return res.status(400).json({
+    message: "Error In changing Profile Picture ",
+  });
+};
