@@ -23,6 +23,19 @@ const FormField = () => {
       >
         {(props) => (
           <Form className="flex flex-col gap-2">
+            <label htmlFor="price">Amount (₹)</label>
+            <Field
+              className="border border-gray-400 p-2 rounded-lg"
+              type="text"
+              id="price"
+              name="price"
+              placeholder="price"
+            />
+            <ErrorMessage
+              component="p"
+              className="text-sm text-red-800"
+              name="price"
+            />
             <label htmlFor="title">Title</label>
             <Field
               className="border border-gray-400 p-2 rounded-lg"
@@ -35,19 +48,6 @@ const FormField = () => {
               component="p"
               className="text-sm text-red-800"
               name="title"
-            />
-            <label htmlFor="price">Amount (₹)</label>
-            <Field
-              className="border border-gray-400 p-2 rounded-lg"
-              type="number"
-              id="price"
-              name="price"
-              placeholder="price"
-            />
-            <ErrorMessage
-              component="p"
-              className="text-sm text-red-800"
-              name="price"
             />
             <label htmlFor="category">Category</label>
             <Field
