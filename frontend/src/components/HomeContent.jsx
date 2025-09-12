@@ -21,32 +21,41 @@ const HomeContent = () => {
   return (
     <div className=" w-full max-w-6xl px-2  mx-auto flex flex-col gap-4 py-2">
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4 md:gap-8 bg-white shadow-lg rounded-2xl p-4 md:p-8 w-full">
-        <img
-          className="h-28 w-28 rounded-full object-cover ring-4 ring-gray-100 shadow-lg"
-          src={user.profileImage}
-          alt="Profile"
-        />
-        <input
-          type="file"
-          onChange={async (event) => {
-            const profileImage = event.currentTarget.files[0];
-            const formdata = new FormData();
-            formdata.append("profileImage", profileImage);
-            try {
-              await axios.post(
-                "https://expense-tracker-x2d5.onrender.com/user/changeProfilePic",
-                formdata,
-                {
-                  withCredentials: true,
-                }
-              );
-            } catch (error) {
-              console.log(error);
-            } finally {
-              setRefresh(true);
-            }
-          }}
-        />
+        <div className="relative">
+          <img
+            className="h-28 w-28 rounded-full object-cover ring-4 ring-gray-100 shadow-lg"
+            src={user.profileImage}
+            alt="Profile"
+          />
+          <label
+            htmlFor="profileUpload"
+            className="absolute bottom-2 right-2 flex h-8 w-8 items-center justify-center rounded-full bg-white shadow-md cursor-pointer hover:bg-gray-100 transition text-gray-600 text-lg font-bold"
+          >
+            ✎
+          </label>
+          <input
+            id="profileUpload"
+            type="file"
+            className="hidden"
+            onChange={async (event) => {
+              const profileImage = event.currentTarget.files[0];
+              if (!profileImage) return;
+              const formdata = new FormData();
+              formdata.append("profileImage", profileImage);
+              try {
+                await axios.post(
+                  "https://expense-tracker-x2d5.onrender.com/user/changeProfilePic",
+                  formdata,
+                  { withCredentials: true }
+                );
+              } catch (error) {
+                console.log(error);
+              } finally {
+                setRefresh(true);
+              }
+            }}
+          />
+        </div>
 
         <div className="flex flex-col gap-1 text-center sm:text-left">
           <h1 className="text-4xl font-semibold tracking-wide text-gray-900">
