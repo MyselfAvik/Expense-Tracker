@@ -202,6 +202,7 @@ export const AppContextProvider = ({ children }) => {
         register,
         deleteExpense,
         sendExpense,
+        setRefresh,
         categoryTotals,
         expense,
         monthTotals,

@@ -3,8 +3,9 @@ import FormField from "../components/FormField";
 import { useApp } from "../context/Context";
 import Charts from "./Charts";
 import axios from "axios";
+
 const HomeContent = () => {
-  const { user, expense, categoryTotals, downloadCsv } = useApp();
+  const { user, expense, categoryTotals, downloadCsv, setRefresh } = useApp();
   const [totalPrice, setTotalPrice] = useState(0);
   const maxValue = Math.max(...Object.values(categoryTotals));
   const maxCategoryName = Object.keys(categoryTotals).find(
@@ -41,6 +42,8 @@ const HomeContent = () => {
               );
             } catch (error) {
               console.log(error);
+            } finally {
+              setRefresh(true);
             }
           }}
         />
